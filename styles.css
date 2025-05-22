@@ -1,0 +1,242 @@
+:root {
+    --color-primary: #4f46e5;
+    --color-primary-hover: #4338ca;
+    --color-background: #f9fafb;
+    --color-card: #ffffff;
+    --color-text: #1f2937;
+    --color-text-light: #6b7280;
+    --color-border: #e5e7eb;
+    --color-success: #10b981;
+
+    /* Colores para prioridades */
+    --priority-baja: #22c55e;
+    --priority-media: #f59e0b;
+    --priority-alta: #ef4444;
+    --priority-urgente: #7c3aed;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius: 0.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.task-form,
+.tasks-container,
+.filters {
+    background-color: var(--color-card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+input,
+select,
+button {
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    font-family: inherit;
+}
+
+input,
+select {
+    flex-grow: 1;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 500;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--color-primary-hover);
+    color: white;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.filter-btn {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+}
+
+.filter-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.search-container {
+    margin-top: 1rem;
+}
+
+#tasksList {
+    list-style: none;
+}
+
+.task-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    animation: fadeIn 0.3s ease-in-out;
+    column-gap: 12px;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin-top: 3px;
+    grid-column: 1;
+}
+
+.task-text {
+    font-size: 1rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding-top: 2px;
+    grid-column: 2;
+}
+
+.task-completed .task-text {
+    text-decoration: line-through;
+    color: var(--color-text-light);
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+    grid-column: 3;
+}
+
+.edit-btn,
+.delete-btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.edit-btn {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.delete-btn {
+    background-color: #ef4444;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
+}
+
+/* Estilos para las prioridades */
+.priority-baja {
+    border-left: 4px solid var(--priority-baja);
+}
+
+.priority-media {
+    border-left: 4px solid var(--priority-media);
+}
+
+.priority-alta {
+    border-left: 4px solid var(--priority-alta);
+}
+
+.priority-urgente {
+    border-left: 4px solid var(--priority-urgente);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .task-item {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+    }
+
+    .task-actions {
+        grid-column: 1 / 3;
+        grid-row: 2;
+        justify-self: end;
+        margin-top: 0.5rem;
+    }
+}

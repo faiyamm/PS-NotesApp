@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Gestión de Tareas</h1>
+        </header>
+        
+        <div class="task-form">
+            <div class="form-group">
+                <input type="text" id="taskInput" placeholder="Nueva tarea...">
+                <select id="prioritySelect">
+                    <option value="baja">Baja</option>
+                    <option value="media">Media</option>
+                    <option value="alta">Alta</option>
+                    <option value="urgente">Urgente</option>
+                </select>
+                <button id="addTaskBtn">Agregar</button>
+            </div>
+        </div>
+
+        <div class="filters">
+            <h3>Filtrar por:</h3>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="todas">Todas</button>
+                <button class="filter-btn" data-filter="baja">Baja</button>
+                <button class="filter-btn" data-filter="media">Media</button>
+                <button class="filter-btn" data-filter="alta">Alta</button>
+                <button class="filter-btn" data-filter="urgente">Urgente</button>
+                <button class="filter-btn" data-filter="completadas">Completadas</button>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar tareas...">
+            </div>
+        </div>
+
+        <div class="tasks-container">
+            <h2>Mis Tareas</h2>
+            <ul id="tasksList"></ul>
+        </div>
+    </div>
+
+    <!-- Template para las tareas -->
+    <template id="task-template">
+        <li class="task-item">
+            <input type="checkbox" class="task-checkbox">
+            <span class="task-text"></span>
+            <div class="task-actions">
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Eliminar</button>
+            </div>
+        </li>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+</html>
